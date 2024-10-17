@@ -1,6 +1,6 @@
 # Carrera de Autos en C++
 
-Este programa simula una carrera de autos utilizando hebras (`threads`) en C++. Cada auto corre en una hebra separada, con avances aleatorios y pausas también aleatorias. Al finalizar la carrera, se muestra el progreso en tiempo real y el orden de llegada de los autos.
+Este programa simula una carrera de autos utilizando hebras (`threads`) en C++. Cada auto corre en una hebra separada con avances aleatorios. Al finalizar la carrera, se muestra el progreso en tiempo real y el orden de llegada de los autos.
 
 ## Requisitos
 
