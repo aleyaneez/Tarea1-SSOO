@@ -28,7 +28,7 @@ Este proyecto incluye un **Makefile** para facilitar el proceso de compilación.
 2. Navega hasta el directorio donde se clonó el repositorio:
 
    ```bash
-   cd carrera-autos
+   cd Tarea1-SSOO
    ```
 
 3. Ejecuta el siguiente comando para compilar el programa:
