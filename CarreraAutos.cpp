@@ -58,8 +58,45 @@ void simularCarrera(int idAuto) {
 }
 
 /**
- * Función principal
+ * Función principal que inicializa la carrera y ejecuta las hebras de los autos.
+ * Recibe los parámetros de distancia de la carrera y el número de autos desde la línea de comandos.
  */
-int main() {
+int main(int argc, char *argv[]) {
+    // Validar los argumentos de entrada (espera dos argumentos: distancia y número de autos)
+    if (argc != 3) {
+        cout << "Uso: ./carrera <distancia_meta> <numero_autos>\n";
+        return 1;
+    }
+
+    // Asignar la distancia total de la carrera y el número de autos a las variables globales
+    distanciaMeta = stoi(argv[1]);  // Convertir el primer argumento a entero (distancia total en metros)
+    numeroAutos = stoi(argv[2]);    // Convertir el segundo argumento a entero (número de autos participantes)
+
+    // Inicializar el vector de progreso de los autos con ceros
+    progresoAutos.resize(numeroAutos, 0);
+
+    // Crear un vector para almacenar las hebras de los autos
+    vector<thread> hebrasAutos;
+
+    // Crear una hebra por cada auto, ejecutando la función simularCarrera
+    for (int i = 0; i < numeroAutos; ++i) {
+        hebrasAutos.push_back(thread(simularCarrera, i));  // Crear y lanzar la hebra para cada auto
+    }
+
+    // Esperar a que todas las hebras (autos) terminen su ejecución
+    for (int i = 0; i < numeroAutos; ++i) {
+        hebrasAutos[i].join();  // Asegurarse de que cada auto termine su carrera antes de continuar
+    }
+
+    // Mostrar los resultados finales de la carrera, basados en el orden de llegada
+    cout << "\nResultados de la carrera:\n";
+    cout << "Lugar               Auto\n";
+    cout << "------------------------\n";
+
+    // Mostrar en consola el orden de llegada de los autos
+    for (int i = 0; i < ordenLlegada.size(); ++i) {
+        cout << " " << i + 1 << "                Auto " << ordenLlegada[i] << "\n";
+    }
+
     return 0;
 }
