@@ -78,6 +78,14 @@ int main(int argc, char *argv[]) {
     // Crear un vector para almacenar las hebras de los autos
     vector<thread> hebrasAutos;
 
+     // Mostrar en consola el mensaje de inicio de la carrera
+    cout << "--------------------------------------------\n";
+    cout << "\033[93m¡Bienvenidos a la carrera de autos!\033[0m\n";
+    cout << "\033[93mPara esta carrera de " << distanciaMeta << " metros, se han inscrito " << numeroAutos << " autos.\033[0m\n";
+    cout << "--------------------------------------------\n";
+    cout << "\033[92m¡Preparados, listos, comienza la carrera!\033[0m\n";
+    cout << "--------------------------------------------\n";
+
     // Crear una hebra por cada auto, ejecutando la función simularCarrera
     for (int i = 0; i < numeroAutos; ++i) {
         hebrasAutos.push_back(thread(simularCarrera, i));  // Crear y lanzar la hebra para cada auto
